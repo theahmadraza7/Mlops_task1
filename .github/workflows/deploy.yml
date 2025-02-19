@@ -1,9 +1,9 @@
-name: Deploy Flask App to Vercel
+name: Auto Deploy Flask App to Vercel
 
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   deploy:
@@ -22,4 +22,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Deploy to Vercel
-        run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_YOUR_PROJECT_ID/your-vercel-token"
+        env:
+          VERCEL_TOKEN: ${{ secrets.WP2FuPJ2PdWHKAsnPvQ4bbaU }}
+          VERCEL_PROJECT_ID: ${{ secrets.prj_IVn3Ffvc2jlC2ahmPA3YBehbzRzO }}
+        run: |
+          curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_${{ secrets.prj_IVn3Ffvc2jlC2ahmPA3YBehbzRzO }}/$VERCEL_TOKEN"
