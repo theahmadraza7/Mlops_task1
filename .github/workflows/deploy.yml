@@ -1,0 +1,25 @@
+name: Deploy Flask App to Vercel
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Deploy to Vercel
+        run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_YOUR_PROJECT_ID/your-vercel-token"
