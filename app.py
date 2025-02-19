@@ -13,7 +13,7 @@ def home():
         </head>
         <body>
             <h1>I am Ahmad Raza.</h1>
-            <p>VERCEL SCENES.</p>
+            <p>VERCEL SCENE AND TEST UPDATES</p>
         </body>
         </html>
     """)
